@@ -4,11 +4,13 @@
       <img src="../assets/images/logo.svg" alt="logo" class="header__logo" />
       <img src="../assets/images/logo-2.svg" alt="logo" class="header__logo" />
     </div>
-    <ul class="header__menu">
-      <li>Аналитика</li>
-      <li>Сообщество</li>
-      <li>Для организаций</li>
-    </ul>
+    <nav>
+      <ul class="header__menu">
+        <li>Аналитика</li>
+        <li>Сообщество</li>
+        <li>Для организаций</li>
+      </ul>
+    </nav>
 
     <div class="header__user-control">
       <button class="header__button">Создать заявку</button>
