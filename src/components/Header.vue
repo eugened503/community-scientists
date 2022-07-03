@@ -33,12 +33,25 @@ export default {
 <style scoped lang="scss">
 .header {
   &__menu {
-    color: $color-neon;
+    //color: $color-neon;
+    color: #575756;
     font-family: "Graphik LCG";
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 18px;
+  }
+
+  &__button {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: red;
   }
 }
 </style>
