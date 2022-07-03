@@ -34,6 +34,11 @@ export default {
 .header {
   &__menu {
     color: $color-neon;
+    font-family: "Graphik LCG";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
   }
 }
 </style>
