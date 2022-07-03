@@ -75,6 +75,7 @@
           </button>
         </div>
       </article>
+      <button class="scientists__button">Смотреть все</button>
     </div>
   </section>
 </template>
