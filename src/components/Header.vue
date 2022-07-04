@@ -2,13 +2,13 @@
   <header class="header">
     <div class="header__logos">
       <img src="../assets/images/logo.svg" alt="logo" class="header__logo" />
-      <img src="../assets/images/logo-2.svg" alt="logo" class="header__logo" />
+      <img src="../assets/images/logo-2.svg" alt="logo" />
     </div>
     <nav>
-      <ul class="header__menu">
-        <li>Аналитика</li>
-        <li>Сообщество</li>
-        <li>Для организаций</li>
+      <ul class="header-menu">
+        <li class="header-menu__item">Аналитика</li>
+        <li class="header-menu__item">Сообщество</li>
+        <li class="header-menu__item">Для организаций</li>
       </ul>
     </nav>
 
@@ -32,26 +32,62 @@ export default {
 
 <style scoped lang="scss">
 .header {
-  &__menu {
-    //color: $color-neon;
-    color: #575756;
-    font-family: "Graphik LCG";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 18px;
+  display: flex;
+  align-items: center;
+  background: $color-white;
+  padding: 20px 164px 20px 162px;
+
+  &__logos {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin: 0 6px 0 0;
+  }
+
+  &__user-control {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 auto;
+  }
+
+  &__link {
+    margin: 0 0 0 29px;
   }
 
   &__button {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
+    padding: 12px 33px 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
     text-align: center;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: red;
+    color: $color-blue;
+    border: 1px solid $color-blue;
+    border-radius: 123px;
+
+    &:hover {
+      background: $color-blue;
+      color: $color-white;
+    }
+  }
+
+  &__button-logout {
+    margin: 0 0 0 29px;
+  }
+}
+
+.header-menu {
+  display: flex;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  color: #575756;
+
+  &__item {
+    margin: 0 0 0 55px;
   }
 }
 </style>
