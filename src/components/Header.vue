@@ -66,6 +66,7 @@ export default {
   &__logos {
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 
   &__logo {
@@ -82,6 +83,7 @@ export default {
         height: 27px;
       }
     }
+
     &:last-child {
       @media screen and (max-width: $mobile-big - 1px) {
         width: 65px;
@@ -112,6 +114,7 @@ export default {
 
   &__link {
     margin: 0 0 0 29px;
+    cursor: pointer;
 
     @media screen and (max-width: $laptop-middle) {
       display: none;
@@ -190,6 +193,11 @@ export default {
 
   &__item {
     margin: 0 0 0 55px;
+
+    &:hover {
+      color: $color-blue;
+      cursor: pointer;
+    }
   }
 }
 </style>
