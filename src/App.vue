@@ -9,6 +9,9 @@
 <style lang="scss">
 #app {
   background: #f9fbff;
+  max-width: 1920px;
+  min-width: 320px;
+  margin: 0 auto;
 }
 
 // nav {
