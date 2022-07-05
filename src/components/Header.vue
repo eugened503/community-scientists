@@ -173,30 +173,29 @@ export default {
       margin: 0 0 0 25px;
     }
   }
-}
+  .header-menu {
+    display: flex;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #575756;
 
-.header-menu {
-  display: flex;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 18px;
-  color: #575756;
+    @media screen and (max-width: $laptop-big) {
+      font-size: 16px;
+      line-height: 16px;
+    }
 
-  @media screen and (max-width: $laptop-big) {
-    font-size: 16px;
-    line-height: 16px;
-  }
+    @media screen and (max-width: $laptop-middle) {
+      display: none;
+    }
 
-  @media screen and (max-width: $laptop-middle) {
-    display: none;
-  }
+    &__item {
+      margin: 0 0 0 55px;
 
-  &__item {
-    margin: 0 0 0 55px;
-
-    &:hover {
-      color: $color-blue;
-      cursor: pointer;
+      &:hover {
+        color: $color-blue;
+        cursor: pointer;
+      }
     }
   }
 }
