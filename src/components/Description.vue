@@ -162,7 +162,7 @@ export default {
         width: percentage(65/676);
       }
       @media screen and (max-width: $tablet - 1px) {
-        width: 0;
+        display: none;
       }
     }
   }
@@ -258,10 +258,6 @@ export default {
         img {
           width: 15px;
         }
-      }
-
-      @media screen and (max-width: $tablet - 1px) {
-        display: none;
       }
     }
   }
