@@ -32,7 +32,7 @@
           <ul class="scientists-card__award-tabs">
             <li
               class="scientists-card__award-item"
-              :class="{ price: item.price }"
+              :class="{ price: item.price, firstChild: window.width <= 1024 }"
               v-for="(item, index) in item.award"
               :key="index"
             >
@@ -45,6 +45,7 @@
           <ul class="scientists-card__keys">
             <li
               class="scientists-card__keys-item"
+              :class="{ firstChild: window.width <= 1024 }"
               v-for="(item, index) in item.keys"
               :key="index"
             >
@@ -96,7 +97,6 @@
             Предложить сотрудничество
           </button>
           <button class="scientists-card__button-right">
-            <!-- <img src="../assets/images/arrow.svg" alt="key-image" /> -->
             <arrow-svg />
           </button>
         </div>
@@ -113,6 +113,10 @@ export default {
   components: { ArrowSvg },
   data() {
     return {
+      window: {
+        width: 0,
+        height: 0,
+      },
       items: [
         {
           tabs: [{ text: "Цитировать других" }, { text: "Neuro/Psycho" }],
@@ -285,18 +289,68 @@ export default {
       ],
     };
   },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .community {
   margin: 145px 137.5px 0 141.5px;
+
+  @media screen and (max-width: $laptop-big) {
+    margin: 70px 162.5px 0 137.5px;
+  }
+
+  @media screen and (max-width: $laptop-small) {
+    margin: 78px 118px 0;
+    //margin: 67px 0 0;
+  }
+
+  @media screen and (max-width: $tablet) {
+    //margin: 69px 0 0;
+  }
+
+  @media screen and (max-width: $mobile-big) {
+    //margin: 52px 0 0;
+  }
+
   &__title {
     font-weight: 700;
     font-size: 40px;
     line-height: 40px;
     text-align: center;
     color: #383838;
+
+    @media screen and (max-width: $laptop-big) {
+      font-size: 26px;
+      line-height: 26px;
+    }
+
+    @media screen and (max-width: $laptop-small) {
+      //margin: 67px 0 0;
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    @media screen and (max-width: $tablet) {
+      //margin: 69px 0 0;
+    }
+
+    @media screen and (max-width: $mobile-big) {
+      //margin: 52px 0 0;
+    }
   }
 
   &__subtitle {
@@ -308,6 +362,24 @@ export default {
     text-align: center;
     margin: 15px 0 0;
     color: #464646;
+
+    @media screen and (max-width: $laptop-big) {
+      margin: 13px 0 0;
+      font-size: 16px;
+      line-height: 36px;
+    }
+
+    @media screen and (max-width: $laptop-small) {
+      margin: 10px 0 0;
+    }
+
+    @media screen and (max-width: $tablet) {
+      //margin: 69px 0 0;
+    }
+
+    @media screen and (max-width: $mobile-big) {
+      //margin: 52px 0 0;
+    }
   }
 
   .scientists {
@@ -315,15 +387,50 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     margin: -12px 0 0;
+
+    @media screen and (max-width: $laptop-big) {
+      margin: -3px 0 0;
+    }
+
+    @media screen and (max-width: $laptop-small) {
+      margin: -5px 0 0;
+    }
+
+    @media screen and (max-width: $tablet) {
+      //margin: 69px 0 0;
+    }
+
+    @media screen and (max-width: $mobile-big) {
+      //margin: 52px 0 0;
+    }
   }
 
   .scientists-card {
-    flex: 1;
+    //flex: 1;
+    max-width: 500px;
     margin: 47px percentage(23.5/1688) 0;
     padding: 14px 25px 25px;
     background: $color-white;
     box-shadow: 0px 3px 17px rgba(43, 123, 211, 0.06);
     border-radius: 10px;
+
+    @media screen and (max-width: $laptop-big) {
+      margin: 33px percentage(16.5/1066) 0;
+    }
+
+    @media screen and (max-width: $laptop-small) {
+      max-width: 329px;
+      margin: 20px percentage(10/788) 0;
+      //margin: 67px 0 0;
+    }
+
+    @media screen and (max-width: $tablet) {
+      //margin: 69px 0 0;
+    }
+
+    @media screen and (max-width: $mobile-big) {
+      //margin: 52px 0 0;
+    }
 
     &__tabs {
       display: flex;
@@ -335,6 +442,20 @@ export default {
       text-align: center;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+
+      @media screen and (max-width: $laptop-small) {
+        font-size: 9px;
+        line-height: 11px;
+        //margin: 67px 0 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__tab {
@@ -345,6 +466,18 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
+
+      @media screen and (max-width: $laptop-small) {
+        padding: 9px 10px 8px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
 
       &:first-child {
         color: #bc9300;
@@ -364,10 +497,39 @@ export default {
       font-size: 18px;
       line-height: 19px;
       color: $color-black;
+
+      @media screen and (max-width: $laptop-small) {
+        display: -webkit-box;
+        font-size: 16px;
+        line-height: 18px;
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__comment {
       margin: 27px 0 0;
+
+      @media screen and (max-width: $laptop-small) {
+        margin: 15px 0 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__comment-title {
@@ -375,6 +537,19 @@ export default {
       font-size: 15px;
       line-height: 15px;
       color: #505050;
+
+      @media screen and (max-width: $laptop-small) {
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__comment-text {
@@ -384,10 +559,35 @@ export default {
       line-height: 17px;
       letter-spacing: -0.005em;
       color: $color-black;
+
+      @media screen and (max-width: $laptop-small) {
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__award {
       margin: 27px 0 0;
+
+      @media screen and (max-width: $laptop-small) {
+        margin: 19px 0 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__award-title {
@@ -395,6 +595,19 @@ export default {
       font-size: 15px;
       line-height: 15px;
       color: #505050;
+
+      @media screen and (max-width: $laptop-small) {
+        font-size: 14px;
+        line-height: 14px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__award-tabs {
@@ -404,6 +617,23 @@ export default {
       font-size: 14px;
       line-height: 14px;
       color: #3a85f4;
+
+      @media screen and (max-width: $laptop-small) {
+        margin: 0;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        font-size: 12px;
+        line-height: 12px;
+        //align-items: center;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__award-item {
@@ -414,8 +644,33 @@ export default {
       border-radius: 75px;
       cursor: pointer;
 
+      @media screen and (max-width: $laptop-small) {
+        padding: 9px 10px;
+        margin: 10px 10px 0 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
+
       &:last-child {
         margin: 0;
+
+        @media screen and (max-width: $laptop-small) {
+          margin: 10px 10px 0 0;
+        }
+
+        @media screen and (max-width: $tablet) {
+          //margin: 69px 0 0;
+        }
+
+        @media screen and (max-width: $mobile-big) {
+          //margin: 52px 0 0;
+        }
       }
     }
 
@@ -423,6 +678,21 @@ export default {
       margin: 54px 0 0;
       padding: 0 0 15px;
       border-bottom: 1px solid #cadcf8;
+
+      @media screen and (max-width: $laptop-small) {
+        margin: 24px 0 0;
+        //flex-wrap: wrap;
+        //justify-content: flex-start;
+        //align-items: center;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__keys {
@@ -432,6 +702,21 @@ export default {
       line-height: 14px;
       text-transform: lowercase;
       color: #2f2f2f;
+
+      @media screen and (max-width: $laptop-small) {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        font-size: 12px;
+        line-height: 12px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__keys-item {
@@ -444,13 +729,50 @@ export default {
       border-radius: 75px;
       cursor: pointer;
 
+      @media screen and (max-width: $laptop-small) {
+        padding: 9px 10px;
+        margin: 10px 10px 0 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
+
       &:last-child {
         margin: 0;
+
+        @media screen and (max-width: $laptop-small) {
+          margin: 10px 10px 0 0;
+        }
+
+        @media screen and (max-width: $tablet) {
+          //margin: 69px 0 0;
+        }
+
+        @media screen and (max-width: $mobile-big) {
+          //margin: 52px 0 0;
+        }
       }
     }
 
     &__keys-image {
       margin: 0 8px 0 0;
+
+      @media screen and (max-width: $laptop-small) {
+        margin: 0 5px 0 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__scientist {
@@ -459,11 +781,38 @@ export default {
       margin: 18px 0 0;
       padding: 0 0 16px;
       border-bottom: 1px solid #cadcf8;
+
+      @media screen and (max-width: $laptop-small) {
+        margin: 11px 0 0;
+        padding: 0 0 12px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__scientist-image {
       border-radius: 50%;
       margin: 0 11px 0 0;
+
+      @media screen and (max-width: $laptop-small) {
+        width: 56px;
+        height: 56px;
+        margin: 0 10px 0 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__scientist-name {
@@ -471,6 +820,19 @@ export default {
       font-size: 16px;
       line-height: 19px;
       color: $color-black;
+
+      @media screen and (max-width: $laptop-small) {
+        font-size: 14px;
+        line-height: 16px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__scientist-text {
@@ -481,6 +843,19 @@ export default {
       font-size: 14px;
       line-height: 16px;
       color: $color-black;
+
+      @media screen and (max-width: $laptop-small) {
+        font-size: 12px;
+        line-height: 14px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__scientist-rating {
@@ -494,6 +869,19 @@ export default {
       line-height: 23px;
       text-align: center;
       color: $color-blue;
+
+      @media screen and (max-width: $laptop-small) {
+        font-size: 18px;
+        line-height: 21px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__rating-image {
@@ -504,6 +892,18 @@ export default {
       display: flex;
       justify-content: space-between;
       margin: 15px 0 0;
+
+      @media screen and (max-width: $laptop-small) {
+        margin: 10px 0 0;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     &__button-left {
@@ -521,6 +921,20 @@ export default {
       color: $color-white;
       border: 1px solid transparent;
       pointer-events: none;
+
+      @media screen and (max-width: $laptop-small) {
+        padding: 10px 22px;
+        font-size: 11px;
+        line-height: 14px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
     }
 
     .button-passive {
@@ -536,6 +950,10 @@ export default {
 
     &__button-image {
       margin: 0 7px 0 0;
+
+      @media screen and (max-width: $laptop-small) {
+        display: none;
+      }
     }
 
     &__button-right {
@@ -546,6 +964,19 @@ export default {
       height: 41px;
       border-radius: 50%;
       border: 1.5px solid $color-blue;
+
+      @media screen and (max-width: $laptop-small) {
+        width: 33px;
+        height: 33px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        //margin: 69px 0 0;
+      }
+
+      @media screen and (max-width: $mobile-big) {
+        //margin: 52px 0 0;
+      }
 
       &:hover {
         background: $color-blue;
@@ -584,9 +1015,31 @@ export default {
     border-radius: 123px;
     color: $color-blue;
 
+    @media screen and (max-width: $laptop-small) {
+      margin: 53px auto 0;
+      padding: 14px 43px;
+      font-size: 13px;
+      line-height: 15px;
+    }
+
+    @media screen and (max-width: $tablet) {
+      //margin: 69px 0 0;
+    }
+
+    @media screen and (max-width: $mobile-big) {
+      //margin: 52px 0 0;
+    }
+
     &:hover {
       background: $color-blue;
       color: $color-white;
+    }
+  }
+
+  .firstChild {
+    display: none;
+    &:first-child {
+      display: block;
     }
   }
 }
