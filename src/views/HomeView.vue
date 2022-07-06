@@ -3,8 +3,8 @@
     <Header />
     <Banner />
     <Description />
-    <!-- <Community />
-    <Footer /> -->
+    <Community />
+    <!-- <Footer /> -->
   </div>
 </template>
 
@@ -12,12 +12,12 @@
 import Header from "@/components/Header.vue";
 import Banner from "@/components/Banner.vue";
 import Description from "@/components/Description.vue";
-//import Community from "@/components/Community.vue";
+import Community from "@/components/Community.vue";
 //import Footer from "@/components/Footer.vue";
 
 export default {
   name: "HomeView",
   //components: { Header, Banner, Description, Community, Footer },
-  components: { Header, Banner, Description },
+  components: { Header, Banner, Description, Community },
 };
 </script>
