@@ -93,15 +93,11 @@
             Сотрудничество предложено
           </button>
           <button class="button-passive scientists-card__button-left" v-else>
-            <img
-              class="scientists-card__button-image"
-              src="../assets/images/done.svg"
-              alt="key-image"
-            />
             Предложить сотрудничество
           </button>
           <button class="scientists-card__button-right">
-            <img src="../assets/images/arrow.svg" alt="key-image" />
+            <!-- <img src="../assets/images/arrow.svg" alt="key-image" /> -->
+            <arrow-svg />
           </button>
         </div>
       </article>
@@ -111,8 +107,10 @@
 </template>
 
 <script>
+import ArrowSvg from "@/components/ArrowSvg.vue";
 export default {
   name: "DescriptionView",
+  components: { ArrowSvg },
   data() {
     return {
       items: [
@@ -346,6 +344,7 @@ export default {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      cursor: pointer;
 
       &:first-child {
         color: #bc9300;
@@ -413,6 +412,7 @@ export default {
       //padding: 9px 21px 7px;
       border: 1px solid #3a85f4;
       border-radius: 75px;
+      cursor: pointer;
 
       &:last-child {
         margin: 0;
@@ -442,6 +442,7 @@ export default {
       //padding: 9px 21px 7px;
       background: #f3f3f3;
       border-radius: 75px;
+      cursor: pointer;
 
       &:last-child {
         margin: 0;
@@ -518,10 +519,19 @@ export default {
       letter-spacing: 0.02em;
       text-transform: uppercase;
       color: $color-white;
+      border: 1px solid transparent;
+      pointer-events: none;
     }
 
     .button-passive {
       background: $color-blue;
+      pointer-events: inherit;
+
+      &:hover {
+        background: $color-white;
+        color: $color-blue;
+        border: 1px solid $color-blue;
+      }
     }
 
     &__button-image {
@@ -536,6 +546,15 @@ export default {
       height: 41px;
       border-radius: 50%;
       border: 1.5px solid $color-blue;
+
+      &:hover {
+        background: $color-blue;
+        color: $color-white;
+
+        svg path {
+          stroke: $color-white;
+        }
+      }
     }
 
     .price {
@@ -545,6 +564,7 @@ export default {
       line-height: 14px;
       padding: 9px 0 7px;
       color: #2f2f2f;
+      pointer-events: none;
     }
   }
 
@@ -563,6 +583,11 @@ export default {
     border: 2px solid $color-blue;
     border-radius: 123px;
     color: $color-blue;
+
+    &:hover {
+      background: $color-blue;
+      color: $color-white;
+    }
   }
 }
 </style>
