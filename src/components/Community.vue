@@ -1039,7 +1039,7 @@ export default {
   .firstChild {
     display: none;
     &:first-child {
-      display: block;
+      display: flex;
     }
   }
 }
