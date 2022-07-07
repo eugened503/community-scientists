@@ -31,8 +31,8 @@
           <h4 class="scientists-card__award-title">Вознаграждение</h4>
           <ul class="scientists-card__award-tabs">
             <li
-              class="scientists-card__award-item"
-              :class="{ price: item.price, firstChild: window.width <= 1024 }"
+              class="first-child scientists-card__award-item"
+              :class="{ price: item.price }"
               v-for="(item, index) in item.award"
               :key="index"
             >
@@ -44,8 +44,7 @@
         <div class="scientists-card__keys-wrapper">
           <ul class="scientists-card__keys">
             <li
-              class="scientists-card__keys-item"
-              :class="{ firstChild: window.width <= 1024 }"
+              class="first-child scientists-card__keys-item"
               v-for="(item, index) in item.keys"
               :key="index"
             >
@@ -113,10 +112,6 @@ export default {
   components: { ArrowSvg },
   data() {
     return {
-      window: {
-        width: 0,
-        height: 0,
-      },
       items: [
         {
           tabs: [{ text: "Цитировать других" }, { text: "Neuro/Psycho" }],
@@ -289,19 +284,6 @@ export default {
       ],
     };
   },
-  created() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  methods: {
-    handleResize() {
-      this.window.width = window.innerWidth;
-      this.window.height = window.innerHeight;
-    },
-  },
 };
 </script>
 
@@ -315,15 +297,14 @@ export default {
 
   @media screen and (max-width: $laptop-small) {
     margin: 78px 118px 0;
-    //margin: 67px 0 0;
   }
 
   @media screen and (max-width: $tablet) {
-    //margin: 69px 0 0;
+    margin: 78px 25px 0;
   }
 
   @media screen and (max-width: $mobile-big) {
-    //margin: 52px 0 0;
+    margin: 94px 0 0;
   }
 
   &__title {
@@ -339,17 +320,8 @@ export default {
     }
 
     @media screen and (max-width: $laptop-small) {
-      //margin: 67px 0 0;
       font-size: 24px;
       line-height: 24px;
-    }
-
-    @media screen and (max-width: $tablet) {
-      //margin: 69px 0 0;
-    }
-
-    @media screen and (max-width: $mobile-big) {
-      //margin: 52px 0 0;
     }
   }
 
@@ -372,14 +344,6 @@ export default {
     @media screen and (max-width: $laptop-small) {
       margin: 10px 0 0;
     }
-
-    @media screen and (max-width: $tablet) {
-      //margin: 69px 0 0;
-    }
-
-    @media screen and (max-width: $mobile-big) {
-      //margin: 52px 0 0;
-    }
   }
 
   .scientists {
@@ -392,21 +356,16 @@ export default {
       margin: -3px 0 0;
     }
 
-    @media screen and (max-width: $laptop-small) {
+    @media screen and (max-width: $tablet) {
       margin: -5px 0 0;
     }
 
-    @media screen and (max-width: $tablet) {
-      //margin: 69px 0 0;
-    }
-
     @media screen and (max-width: $mobile-big) {
-      //margin: 52px 0 0;
+      margin: -11px 0 0;
     }
   }
 
   .scientists-card {
-    //flex: 1;
     max-width: 500px;
     margin: 47px percentage(23.5/1688) 0;
     padding: 14px 25px 25px;
@@ -419,17 +378,23 @@ export default {
     }
 
     @media screen and (max-width: $laptop-small) {
-      max-width: 329px;
-      margin: 20px percentage(10/788) 0;
-      //margin: 67px 0 0;
+      max-width: 376px;
+      margin: 18px percentage(9/788) 0;
     }
 
     @media screen and (max-width: $tablet) {
-      //margin: 69px 0 0;
+      //max-width: 329px;
+      margin: 20px percentage(10/718) 0;
+      padding: 15px 15px 20px;
     }
 
     @media screen and (max-width: $mobile-big) {
-      //margin: 52px 0 0;
+      max-width: 340px;
+      margin: 26px percentage(15/320) 0;
+    }
+
+    @media screen and (max-width: $mobile-big - 1px) {
+      max-width: 290px;
     }
 
     &__tabs {
@@ -446,15 +411,6 @@ export default {
       @media screen and (max-width: $laptop-small) {
         font-size: 9px;
         line-height: 11px;
-        //margin: 67px 0 0;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -469,14 +425,6 @@ export default {
 
       @media screen and (max-width: $laptop-small) {
         padding: 9px 10px 8px;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
 
       &:first-child {
@@ -506,14 +454,6 @@ export default {
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
       }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
-      }
     }
 
     &__comment {
@@ -521,14 +461,6 @@ export default {
 
       @media screen and (max-width: $laptop-small) {
         margin: 15px 0 0;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -541,14 +473,6 @@ export default {
       @media screen and (max-width: $laptop-small) {
         font-size: 14px;
         line-height: 14px;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -564,14 +488,6 @@ export default {
         font-size: 12px;
         line-height: 14px;
       }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
-      }
     }
 
     &__award {
@@ -579,14 +495,6 @@ export default {
 
       @media screen and (max-width: $laptop-small) {
         margin: 19px 0 0;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -599,14 +507,6 @@ export default {
       @media screen and (max-width: $laptop-small) {
         font-size: 14px;
         line-height: 14px;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -624,22 +524,12 @@ export default {
         justify-content: flex-start;
         font-size: 12px;
         line-height: 12px;
-        //align-items: center;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
     &__award-item {
       margin: 0 10px 0 0;
       padding: 9px 16.5px 7px;
-      //padding: 9px 21px 7px;
       border: 1px solid #3a85f4;
       border-radius: 75px;
       cursor: pointer;
@@ -649,27 +539,11 @@ export default {
         margin: 10px 10px 0 0;
       }
 
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
-      }
-
       &:last-child {
         margin: 0;
 
         @media screen and (max-width: $laptop-small) {
           margin: 10px 10px 0 0;
-        }
-
-        @media screen and (max-width: $tablet) {
-          //margin: 69px 0 0;
-        }
-
-        @media screen and (max-width: $mobile-big) {
-          //margin: 52px 0 0;
         }
       }
     }
@@ -681,17 +555,6 @@ export default {
 
       @media screen and (max-width: $laptop-small) {
         margin: 24px 0 0;
-        //flex-wrap: wrap;
-        //justify-content: flex-start;
-        //align-items: center;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -709,14 +572,6 @@ export default {
         font-size: 12px;
         line-height: 12px;
       }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
-      }
     }
 
     &__keys-item {
@@ -724,7 +579,6 @@ export default {
       align-items: center;
       margin: 0 15px 0 0;
       padding: 8px 15px;
-      //padding: 9px 21px 7px;
       background: #f3f3f3;
       border-radius: 75px;
       cursor: pointer;
@@ -734,27 +588,11 @@ export default {
         margin: 10px 10px 0 0;
       }
 
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
-      }
-
       &:last-child {
         margin: 0;
 
         @media screen and (max-width: $laptop-small) {
           margin: 10px 10px 0 0;
-        }
-
-        @media screen and (max-width: $tablet) {
-          //margin: 69px 0 0;
-        }
-
-        @media screen and (max-width: $mobile-big) {
-          //margin: 52px 0 0;
         }
       }
     }
@@ -764,14 +602,6 @@ export default {
 
       @media screen and (max-width: $laptop-small) {
         margin: 0 5px 0 0;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -786,14 +616,6 @@ export default {
         margin: 11px 0 0;
         padding: 0 0 12px;
       }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
-      }
     }
 
     &__scientist-image {
@@ -804,14 +626,6 @@ export default {
         width: 56px;
         height: 56px;
         margin: 0 10px 0 0;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -824,14 +638,6 @@ export default {
       @media screen and (max-width: $laptop-small) {
         font-size: 14px;
         line-height: 16px;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -847,14 +653,6 @@ export default {
       @media screen and (max-width: $laptop-small) {
         font-size: 12px;
         line-height: 14px;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -874,14 +672,6 @@ export default {
         font-size: 18px;
         line-height: 21px;
       }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
-      }
     }
 
     &__rating-image {
@@ -895,14 +685,6 @@ export default {
 
       @media screen and (max-width: $laptop-small) {
         margin: 10px 0 0;
-      }
-
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
       }
     }
 
@@ -928,12 +710,10 @@ export default {
         line-height: 14px;
       }
 
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
-
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
+      @media screen and (max-width: $mobile-big - 1px) {
+        padding: 10px 18px 7px;
+        font-size: 10px;
+        line-height: 12px;
       }
     }
 
@@ -968,14 +748,21 @@ export default {
       @media screen and (max-width: $laptop-small) {
         width: 33px;
         height: 33px;
+
+        svg {
+          width: 7px;
+          height: 12px;
+        }
       }
 
-      @media screen and (max-width: $tablet) {
-        //margin: 69px 0 0;
-      }
+      @media screen and (max-width: $mobile-big - 1px) {
+        width: 29px;
+        height: 29px;
 
-      @media screen and (max-width: $mobile-big) {
-        //margin: 52px 0 0;
+        svg {
+          width: 6px;
+          height: 11px;
+        }
       }
 
       &:hover {
@@ -1022,12 +809,9 @@ export default {
       line-height: 15px;
     }
 
-    @media screen and (max-width: $tablet) {
-      //margin: 69px 0 0;
-    }
-
-    @media screen and (max-width: $mobile-big) {
-      //margin: 52px 0 0;
+    @media screen and (max-width: $mobile-big - 1px) {
+      margin: 30px auto 0;
+      padding: 13px 30px;
     }
 
     &:hover {
@@ -1036,10 +820,12 @@ export default {
     }
   }
 
-  .firstChild {
-    display: none;
-    &:first-child {
-      display: flex;
+  .first-child {
+    @media screen and (max-width: $laptop-small) {
+      display: none;
+      &:first-child {
+        display: flex;
+      }
     }
   }
 }
