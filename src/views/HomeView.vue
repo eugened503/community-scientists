@@ -4,7 +4,7 @@
     <Banner />
     <Description />
     <Community />
-    <!-- <Footer /> -->
+    <Footer />
   </div>
 </template>
 
@@ -13,11 +13,10 @@ import Header from "@/components/Header.vue";
 import Banner from "@/components/Banner.vue";
 import Description from "@/components/Description.vue";
 import Community from "@/components/Community.vue";
-//import Footer from "@/components/Footer.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "HomeView",
-  //components: { Header, Banner, Description, Community, Footer },
-  components: { Header, Banner, Description, Community },
+  components: { Header, Banner, Description, Community, Footer },
 };
 </script>
