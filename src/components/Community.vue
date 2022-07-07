@@ -516,7 +516,7 @@ export default {
       font-weight: 400;
       font-size: 14px;
       line-height: 14px;
-      color: #3a85f4;
+      color: $color-blue;
 
       @media screen and (max-width: $laptop-small) {
         margin: 0;
@@ -530,7 +530,7 @@ export default {
     &__award-item {
       margin: 0 10px 0 0;
       padding: 9px 16.5px 7px;
-      border: 1px solid #3a85f4;
+      border: 1px solid $color-blue;
       border-radius: 75px;
       cursor: pointer;
 
